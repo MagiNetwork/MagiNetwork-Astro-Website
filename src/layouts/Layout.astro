@@ -11,7 +11,10 @@ const { title } = Astro.props;
 	<head>
 		<!-- ICONA E SETTAGGI DI BASE -->
 		<meta charset="UTF-8" />
-		<meta name="description" content="We are a group of students who are dedicated to the development of open-source applications. We are not affiliated with I.T.I.S. Magistri Cumacini" />
+		<meta
+			name="description"
+			content="We are a group of students who are dedicated to the development of open-source applications. We are not affiliated with I.T.I.S. Magistri Cumacini"
+		/>
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/png" href="/public/img/nav/logo.png" />
 		<!-- IMPORTAZIONE FONT DI GOOGLE -->
@@ -25,6 +28,8 @@ const { title } = Astro.props;
 			href="https://fonts.googleapis.com/css2?family=Amaranth:ital,wght@0,400;0,700;1,400;1,700&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap"
 			rel="stylesheet"
 		/>
+		<script src="/src/layouts/dropdown.js" defer></script>
+		<!-- <script src="/src/layouts/dots.js"></script> -->
 		<!-- TITOLO PAGINA -->
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
@@ -106,7 +111,11 @@ const { title } = Astro.props;
 						</div>
 					</button>
 					<!-- LANGUAGE BUTTON -->
-					<button class="right-button-style">
+					<button
+						class="right-button-style"
+						,
+						onclick="changeLanguage()"
+					>
 						<div id="language">
 							<div class="lang-flag"></div>
 							<div class="lang-dropdown-arrow"></div>
@@ -125,7 +134,9 @@ const { title } = Astro.props;
 			</div>
 		</div>
 		<!-- <div class="back"></div> -->
-		<script src="/src/layouts/index.js"></script>
+		<main>
+			<slot />
+		</main>
 	</body>
 </html>
 <style is:global>
@@ -220,6 +231,7 @@ const { title } = Astro.props;
 
 		width: 30%;
 		margin-right: 40px;
+		position: relative;
 	}
 
 	/* Bottoni della Navbar */
@@ -362,27 +374,27 @@ const { title } = Astro.props;
 	}
 
 	#home-icon-nav {
-		background-image: url(/public/img/nav/home.png);
+		background-image: url(img/nav/home.png);
 	}
 
 	#credits-icon-nav {
-		background-image: url(/public/img/nav/users.png);
+		background-image: url(img/nav/users.png);
 	}
 
 	#projects-icon-nav {
-		background-image: url(/public/img/nav/archive.png);
+		background-image: url(img/nav/archive.png);
 	}
 
 	#contribute-icon-nav {
-		background-image: url(/public/img/nav/pull.png);
+		background-image: url(img/nav/pull.png);
 	}
 
 	#logo {
-		background-image: url(/public/img/nav/logo.png);
+		background-image: url(img/nav/logo.png);
 	}
 
 	#github-icon {
-		background-image: url(/public/img/nav/github.png);
+		background-image: url(img/nav/github.png);
 
 		margin-right: 6px;
 		margin-left: 6px;
@@ -410,7 +422,7 @@ const { title } = Astro.props;
 	}
 
 	.lang-flag {
-		background-image: url(/public/img/nav/lang/it.png);
+		background-image: url(img/nav/lang/it.png);
 
 		background-size: contain;
 		background-repeat: no-repeat;
@@ -423,7 +435,7 @@ const { title } = Astro.props;
 	}
 
 	.lang-dropdown-arrow {
-		background-image: url(/public/img/nav/lang/arrow.png);
+		background-image: url(img/nav/lang/arrow.png);
 
 		background-size: contain;
 		background-repeat: no-repeat;
@@ -434,13 +446,65 @@ const { title } = Astro.props;
 	}
 
 	.language-dropdown {
-		display: none;
 		position: absolute;
+		margin-left: 368px;
+		top: 90px;
+		left: 0;
 		border: 2px solid #171717;
 		border-radius: 10px;
-
 		width: 78px;
 		height: 90px;
+		background-color: #0a0a0a;
+		z-index: 10;
+		display: flex;
+		opacity: 0;
+		transform: translateY(-10px);
+		transition:
+			opacity 0.3s ease,
+			transform 0.3s ease;
+		max-height: 0;
+		overflow: hidden;
+		align-items: center;
+		flex-direction: column;
+
+	}
+
+	.lang-active {
+		opacity: 1;
+		transform: translateY(0);
+		max-height: 200px;
+	}
+
+	.lang-non-active {
+		opacity: 0;
+		transform: translateY(-10px);
+		max-height: 0;
+	}
+
+	.ita-flag {
+		background-image: url(img/nav/lang/it.png);
+
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: center;
+
+		width: 35px;
+		height: 35px;
+
+		margin: 4.5px;
+	}
+
+	.eng-flag {
+		background-image: url(img/nav/lang/en.png);
+
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: center;
+
+		width: 35px;
+		height: 35px;
+
+		margin: 4.5px;
 	}
 
 	/* PALLINI */

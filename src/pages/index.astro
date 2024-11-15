@@ -3,9 +3,11 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Magi Network">
-	<main>
-		<img src="/public/img/title/title.png" alt="" />
-		<img src="/public/img/title/subtitle.png" alt="" />
+	<main>	
+		<div id="title">
+			<div id="title-img"></div>
+			<div id="subtitle-img"></div>
+		</div>
 	</main>
 </Layout>
 
@@ -18,5 +20,39 @@ import Layout from "../layouts/Layout.astro";
 		color: white;
 		font-size: 20px;
 		line-height: 1.6;
+
+		display: relative;
+		align-items: center;
+		flex-direction: row;
+
+		top: 80px;
+	}
+
+	#title {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+		margin-top: 100px;
+	}
+
+	#title-img {
+		background-image: url("/img/title/title.png");
+
+		background-size: contain;
+		background-repeat: no-repeat;
+
+		width: 1400px;
+		height: 150px;
+	}
+
+	#subtitle-img {
+		background-image: url("/img/title/subtitle.png");
+
+		background-size: contain;
+		background-repeat: no-repeat;
+
+		width: 1400px;
+		height: 150px;
 	}
 </style>
