@@ -1,0 +1,460 @@
+---
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<!-- ICONA E SETTAGGI DI BASE -->
+		<meta charset="UTF-8" />
+		<meta name="description" content="MagiNetwork Website" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/png" href="/public/img/nav/logo.png" />
+		<!-- IMPORTAZIONE FONT DI GOOGLE -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Amaranth:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Amaranth:ital,wght@0,400;0,700;1,400;1,700&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap"
+			rel="stylesheet"
+		/>
+		<!-- TITOLO PAGINA -->
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body>
+		<div id="header">
+			<!-- NAVBAR  -->
+			<div id="nav">
+				<!-- PRIMA PARTE: SINISTRA -->
+				<div id="left-nav">
+					<button
+						onclick="window.location.href = '/'"
+						,
+						class="nav-button-style"
+					>
+						<div id="logo" class="icon-nav"></div>
+						<a id="logo-name">MagiNetwork</a>
+					</button>
+				</div>
+				<!-- SECONDO PARTE: CENTRO -->
+				<div id="center-nav">
+					<!-- HOME -->
+					<button
+						onclick="window.location.href = '/'"
+						,
+						class="nav-button-style"
+					>
+						<div class="nav-btn left-btn-nav" id="home">
+							<div id="home-icon-nav" class="icon-nav"></div>
+							<a>HOME</a>
+						</div>
+					</button>
+					<!-- PROGETTI -->
+					<button
+						onclick="window.location.href = '/projects'"
+						,
+						class="nav-button-style"
+					>
+						<div class="nav-btn center-btn-nav" id="projects">
+							<div id="projects-icon-nav" class="icon-nav"></div>
+							<a>PROGETTI</a>
+						</div>
+					</button>
+					<!-- CONTRIBUISCI -->
+					<button
+						onclick="window.location.href = '/contribute'"
+						,
+						class="nav-button-style"
+					>
+						<div class="nav-btn center-btn-nav" id="contribute">
+							<div id="contribute-icon-nav" class="icon-nav">
+							</div>
+							<a>CONTRIBUISCI</a>
+						</div>
+					</button>
+					<!-- CREDITI -->
+					<button
+						onclick="window.location.href = '/credits'"
+						,
+						class="nav-button-style"
+					>
+						<div class="nav-btn right-btn-nav" id="credits">
+							<div id="credits-icon-nav" class="icon-nav"></div>
+							<a>CREDITI</a>
+						</div>
+					</button>
+				</div>
+				<!-- TERZA PARTE: DESTRA -->
+				<div id="right-nav">
+					<!-- GITHUB BUTTON -->
+					<button
+						onclick="window.open('https://github.maginetwork.org', '_blank');"
+						,
+						class="right-button-style"
+					>
+						<div id="github">
+							<a class="text-button">GitHub</a>
+							<div id="github-icon"></div>
+						</div>
+					</button>
+					<!-- LANGUAGE BUTTON -->
+					<button class="right-button-style">
+						<div id="language">
+							<div class="lang-flag"></div>
+							<div class="lang-dropdown-arrow"></div>
+						</div>
+					</button>
+					<!-- LANGUAGE DROPDOWN -->
+					<div class="language-dropdown">
+						<div id="ita">
+							<div class="ita-flag"></div>
+						</div>
+						<div id="eng">
+							<div class="eng-flag"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- <div class="back"></div> -->
+		<script src="/src/layouts/index.js"></script>
+	</body>
+</html>
+<style is:global>
+	:root {
+		--accent: 136, 58, 234;
+		--accent-light: 224, 204, 250;
+		--accent-dark: 49, 10, 101;
+		--accent-gradient: linear-gradient(
+			45deg,
+			rgb(var(--accent)),
+			rgb(var(--accent-light)) 30%,
+			white 60%
+		);
+	}
+	html {
+		font-family: system-ui, sans-serif;
+		background: #0a0a0a;
+		color: #ffffff;
+
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		overflow: hidden;
+	}
+
+	code {
+		font-family:
+			Menlo,
+			Monaco,
+			Lucida Console,
+			Liberation Mono,
+			DejaVu Sans Mono,
+			Bitstream Vera Sans Mono,
+			Courier New,
+			monospace;
+	}
+
+	/* Navbar */
+
+	#header {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+
+		padding-top: 30px;
+
+		width: 1600px;
+	}
+
+	#nav {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+
+		border: 2px solid #171717;
+		border-radius: 10px;
+
+		height: 75px;
+		width: 100%;
+
+		z-index: 10;
+		position: relative;
+	}
+
+	/* 3 Blocchi della Navbar */
+
+	#left-nav {
+		display: flex;
+		flex-direction: row;
+		justify-content: start;
+		align-items: center;
+
+		width: 30%;
+		margin-left: 40px;
+	}
+
+	#center-nav {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+
+		width: 40%;
+		min-width: 450px;
+	}
+
+	#right-nav {
+		display: flex;
+		flex-direction: row;
+		justify-content: end;
+		align-items: center;
+
+		width: 30%;
+		margin-right: 40px;
+	}
+
+	/* Bottoni della Navbar */
+
+	.nav-button-style {
+		background-color: transparent;
+		border: none;
+
+		cursor: pointer;
+
+		text-decoration: none;
+		color: #ffffff;
+		font-size: 18px;
+
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+
+		font-family: "Amaranth", sans-serif;
+		font-weight: 400;
+		font-style: normal;
+
+		/* transition: filter 0.2s ease; */
+	}
+
+	.nav-button-style:hover {
+		filter: brightness(0) saturate(100%) invert(91%) sepia(8%)
+			saturate(643%) hue-rotate(16deg) brightness(91%) contrast(101%);
+	}
+
+	.right-button-style {
+		background-color: transparent;
+		border: none;
+
+		cursor: pointer;
+
+		text-decoration: none;
+		color: #ffffff;
+		font-size: 18px;
+
+		transition: transform 0.2s ease;
+
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+
+		font-family: "Amaranth", sans-serif;
+		font-weight: 400;
+		font-style: normal;
+	}
+
+	.right-button-style:hover {
+		transform: scale(1.03);
+	}
+
+	.text-button {
+		font-family: "Source Code Pro", monospace;
+		font-optical-sizing: auto;
+		font-weight: <weight>;
+		font-style: normal;
+
+		color: #ffffff;
+
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+	}
+
+	#github {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+		border: 2px solid #171717;
+		border-radius: 10px;
+
+		width: 130px;
+		height: 45px;
+
+		margin-right: 12px;
+	}
+
+	#github a {
+		font-family: "Source Code Pro", monospace;
+		font-optical-sizing: auto;
+		font-weight: <weight>;
+		font-style: normal;
+
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+	}
+
+	.nav-btn {
+		text-decoration: none;
+		color: #ffffff;
+		font-size: 18px;
+
+		transition: color 100ms;
+
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+	}
+
+	.left-btn-nav {
+		margin-right: 20px;
+	}
+
+	.center-btn-nav {
+		margin: 0 20px;
+	}
+
+	.right-btn-nav {
+		margin-left: 20px;
+	}
+
+	/* Logo della Navbar */
+
+	#logo-name {
+		font-family: "Source Code Pro", monospace;
+		font-optical-sizing: auto;
+		font-weight: <weight>;
+		font-style: normal;
+
+		color: #ffffff;
+	}
+
+	/* Icone nella Navbar */
+
+	.icon-nav {
+		margin-right: 6px;
+		margin-left: 6px;
+
+		background-size: contain;
+		background-repeat: no-repeat;
+
+		width: 24px;
+		height: 24px;
+	}
+
+	#home-icon-nav {
+		background-image: url(/public/img/nav/home.png);
+	}
+
+	#credits-icon-nav {
+		background-image: url(/public/img/nav/users.png);
+	}
+
+	#projects-icon-nav {
+		background-image: url(/public/img/nav/archive.png);
+	}
+
+	#contribute-icon-nav {
+		background-image: url(/public/img/nav/pull.png);
+	}
+
+	#logo {
+		background-image: url(/public/img/nav/logo.png);
+	}
+
+	#github-icon {
+		background-image: url(/public/img/nav/github.png);
+
+		margin-right: 6px;
+		margin-left: 6px;
+
+		background-size: contain;
+		background-repeat: no-repeat;
+
+		width: 24px;
+		height: 24px;
+	}
+
+	/* Selezione Lingua */
+
+	#language {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+
+		border: 2px solid #171717;
+		border-radius: 10px;
+
+		width: 78px;
+		height: 45px;
+	}
+
+	.lang-flag {
+		background-image: url(/public/img/nav/lang/it.png);
+
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: center;
+
+		margin-right: 4px;
+
+		width: 24px;
+		height: 24px;
+	}
+
+	.lang-dropdown-arrow {
+		background-image: url(/public/img/nav/lang/arrow.png);
+
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: right;
+
+		width: 20px;
+		height: 20px;
+	}
+
+	.language-dropdown {
+		display: none;
+		position: absolute;
+		border: 2px solid #171717;
+		border-radius: 10px;
+
+		width: 78px;
+		height: 90px;
+	}
+
+	/* PALLINI */	
+	.back {
+		margin-top: 80px;
+		height: calc(100% - 80px);
+	}
+
+	.dot {
+		position: absolute;
+		width: 5px;
+		height: 5px;
+		background-color: #101010;
+		border-radius: 50%;
+		pointer-events: none; /* Impedisce interazioni */
+	}
+</style>
